@@ -1,0 +1,13 @@
+//Auth0 Config
+auth0_client_name = "exampleClient"
+auth0_domain = "example.us.auth0.com"
+auth0_clientID = "applicationClientID"
+auth0_client_secret = "applicationClientSecret"
+//Optional
+//auth0_debug
+
+//AWS Config
+aws_region = "us-east-1"
+aws_access_key = "my-access-key"
+aws_secret_key = "my-secret-key"
+aws_account_number = "1234567890"
