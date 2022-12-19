@@ -1,6 +1,4 @@
-# Project Title
-
-Terraform Auth0 Create Custom DB with AWS Cognito
+# Terraform Auth0 Create Custom DB with AWS Cognito
 
 [This is still a WIP project and under development]
 This projects creates the following resources.
