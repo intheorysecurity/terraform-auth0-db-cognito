@@ -10,7 +10,9 @@ const configuration = {
 */
 
 function login(username, password, callback) {
-    global.fetch = require('node-fetch@2.6.0');
+    //Fetch is built-in within CIC NodeJS 18.  
+    //Uncomment line below, if you are using version of NodeJS 16 or lower
+    //global.fetch = require('node-fetch@2.6.0');
     var AmazonCognitoIdentity = require('amazon-cognito-identity-js@3.0.14');
     var poolData = {
         UserPoolId: configuration.UserPoolId,
