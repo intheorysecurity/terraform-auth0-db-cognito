@@ -10,7 +10,7 @@ const configuration = {
 
 function getUser(username, callback) {
     const userParameters =  ["email", "email_verified"];
-    const AWS = require('aws-sdk@2.593.0');
+    const AWS = require('aws-sdk');
     AWS.config.update({ "accessKeyId": configuration.accessKeyId, "secretAccessKey": configuration.secretAccessKey, "region": configuration.region });
     const cognito = new AWS.CognitoIdentityServiceProvider();
 

@@ -1,6 +1,6 @@
 module "cognito" {
   source      = "./modules/cognito"
-  client_name = var.auth0.client_name
+  client_name = var.auth0_client_name
 }
 
 module "auth0connections" {
