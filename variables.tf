@@ -47,6 +47,12 @@ variable "aws_secret_key" {
   default     = "my-secret-key"
 }
 
+variable "aws_session_token" {
+  description = "AWS Session Token"
+  type        = string
+  default     = ""
+}
+
 variable "aws_account_number" {
   description = "AWS Account Number"
   type        = string

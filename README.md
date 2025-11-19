@@ -24,6 +24,7 @@ This project assumes you have the following basic knowledge of the CIC platform.
 ### Demo Setup Steps
 1. Register Machine-to-Machine Applications [How-to](https://auth0.com/docs/get-started/auth0-overview/create-applications/machine-to-machine-apps)
 2. Create an AWS IAM User [How-to](https://developer.okta.com/blog/2020/04/24/okta-terraform-automate-identity-and-infrastructure#create-an-aws-iam-user)
+   - **Note**: If you are using temporary AWS credentials (e.g., from AWS STS, assumed roles, or AWS SSO), you will need to provide a session token in addition to your access key and secret key. See [AWS Session Token Configuration](#aws-session-token-configuration) below for more details.
 
 ### Installation and Configuration
 1. Clone the repo
@@ -55,6 +56,8 @@ aws_region = "us-east-1"
 aws_access_key = "my-access-key"
 aws_secret_key = "my-secret-key"
 aws_account_number = "1234567890"
+//If you are using a session token (e.g., temporary credentials, assumed roles, AWS SSO)
+//aws_session_token = "my-session-token"
 ```
 4. Save the terraform.tfvars file.
 5. Run `terraform init`
@@ -79,6 +82,32 @@ aws_account_number = "1234567890"
     |jesse.soto@example.com|Auth0R0cks!|
     |bertha.jones@example.com|Auth0R0cks!|
     |kylie.lee@example.com|Auth0R0cks!|
+
+## AWS Session Token Configuration
+
+### When to Use AWS Session Tokens
+
+You should use `aws_session_token` when you are working with **temporary AWS credentials** instead of permanent IAM user credentials. Common scenarios include:
+
+- **AWS STS (Security Token Service)**: When using temporary credentials obtained from `aws sts assume-role` or `aws sts get-session-token`
+- **Assumed IAM Roles**: When assuming an IAM role that provides temporary credentials
+- **AWS SSO (Single Sign-On)**: When authenticating through AWS SSO, which provides temporary credentials
+- **Federated Access**: When using federated identity providers that issue temporary credentials
+- **Cross-Account Access**: When accessing resources in another AWS account using assumed roles
+
+### Configuration
+
+If you are using temporary credentials, uncomment and set the `aws_session_token` variable in your `terraform.tfvars` file:
+
+```powershell
+aws_session_token = "your-session-token-here"
+```
+
+**Important Notes:**
+- Session tokens are temporary and expire (typically after 1-12 hours depending on the source)
+- You will need to update the `aws_session_token` value when it expires
+- For permanent IAM user credentials, you can leave this variable commented out or set it to an empty string
+- The session token must be valid at the time you run `terraform plan` and `terraform apply`
 
 ## Contributing
 ---

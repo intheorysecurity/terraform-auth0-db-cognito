@@ -11,3 +11,5 @@ aws_region = "us-east-1"
 aws_access_key = "my-access-key"
 aws_secret_key = "my-secret-key"
 aws_account_number = "1234567890"
+//If you are using a session token
+//aws_session_token="my-session-token"   
